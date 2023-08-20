@@ -8,27 +8,30 @@ class Main {
         char repeat;
         Scanner sc = new Scanner(System.in);
 
-        products.add(new Product("product 1", 1, 50));
-        products.add(new Product("product 2", 1, 100));
-        products.add(new Product("product 3", 1, 250));
-        products.add(new Product("product 4", 1, 150));
-        products.add(new Product("product 5", 1, 200));
-        products.add(new Product("product 6", 1, 300));
-        products.add(new Product("product 7", 1, 350));
-        products.add(new Product("product 8", 1, 400));
-        products.add(new Product("product 9", 1, 500));
-        products.add(new Product("product 10", 1, 450));
+        products.add(new Product("Topi", 1, 50));
+        products.add(new Product("Khukuri", 1, 100));
+        products.add(new Product("Nanglo", 1, 250));
+        products.add(new Product("Thangka", 1, 150));
+        products.add(new Product("Shawl", 1, 200));
+        products.add(new Product("Doko", 1, 300));
+        products.add(new Product("Carpet", 1, 350));
+        products.add(new Product("Gundri", 1, 400));
+        products.add(new Product("Bowls", 1, 500));
+        products.add(new Product("Sarangi", 1, 450));
 
         do {
+            System.out.println("\n\n");
+            System.out.println("Welcome to Handicraft Happiness");
+            System.out.println("------------------------------- \n");
             System.out.println("Product name" + "\t" + "Price" + "\n");
 
             for (Product product : products) {
-                System.out.println(product.getproductname() + "\t" + product.getprice());
+                System.out.println(product.getproductname() + "\t\t" + product.getprice());
             }
             int i;
             for (i = 0; i < 5; i++) {
                 Order order = new Order();
-
+                System.out.println("\n");
                 System.out.println("Enter product name");
                 boolean productfound = false;
                 String itemname = sc.nextLine();
@@ -36,6 +39,7 @@ class Main {
                 for (Product product : products) {
                     if (product.getproductname().equalsIgnoreCase(itemname)) {
                         productfound = true;
+                        System.out.println("\n");
                         System.out.println("Enter quantity");
                         int quantity = sc.nextInt();
                         sc.nextLine();
@@ -51,6 +55,7 @@ class Main {
                         break;
                     }
                 } else {
+                    System.out.println("\n");
                     System.out.println("Total calculation: " + order.getcalulation());
                     System.out.println("Charity contribution: " + order.forcharitycontribution());
                     System.out.println("Final bill: " + order.finalbill());
