@@ -3,16 +3,16 @@ import java.util.Scanner;
 
 public class OrderManager {
     public static void takeOrders(List<Product> products) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        char again;
 
-        for (int i = 1; i <= 5; i++) {
-            Order order = new Order();
+          do{  Order order = new Order();
             System.out.println("\n");
-            System.out.println("Customer " + i);
-            System.out.println("-----------");
+            System.out.println("Enter Customer name ");
+            String name=sc.nextLine();
             System.out.println("Enter product name");
             boolean productFound = false;
-            String itemName = scanner.nextLine();
+            String itemName = sc.nextLine();
 
             // Iterate through the list of products to find a match for the entered item name
             for (Product product : products) {
@@ -20,8 +20,8 @@ public class OrderManager {
                 if (product.getproductname().equalsIgnoreCase(itemName)) {
                     productFound = true;
                     System.out.println("\nEnter quantity");
-                    int quantity = scanner.nextInt();
-                    scanner.nextLine();
+                    int quantity = sc.nextInt();
+                    sc.nextLine();
                     order.additems(product, quantity);
                 }
             }
@@ -30,11 +30,16 @@ public class OrderManager {
             if (!productFound) {
                 System.out.println("Product not found");
             } else {
-                System.out.println("Product Name: " + itemName);
-                System.out.println("Total calculation: " + order.getcalulation());
-                System.out.println("Charity contribution: " + order.forcharitycontribution());
-                System.out.println("Final bill: " + order.finalbill());
+                System.out.println("\t\t\t\t\t" + "Handicraft Happiness");
+                System.out.println("\t\t\t\t\t"+"_______________________\n");
+                System.out.println("\t\t\t"+"Customer Name"+"\t\t\t\t\t"+name);
+                System.out.println("\t\t\t"+"Product Name" +"\t\t\t\t\t"+ itemName);
+                System.out.println("\t\t\t"+"Total calculation" + "\t\t\t\t"+order.getcalulation());
+                System.out.println("\t\t\t"+"Charity contribution " + "\t\t\t\t"+order.forcharitycontribution());
+                System.out.println("\t\t\t"+"Final bill"+ "\t\t\t\t\t" + order.finalbill());
             }
-        }
+            System.out.println("Do you want to repeat again? (Y/N)");
+            again = sc.nextLine().charAt(0);
+        }while(Character.toUpperCase(again)=='Y'|| Character.toUpperCase(again)=='y');
     }
 }
